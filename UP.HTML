@@ -1,0 +1,80 @@
+<DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Deon image Upload
+            </title>
+            <style type="text/css">
+            *{
+            margin: 0;
+            padding: 0;
+            font-family: 'poppings', sans-serif;
+            box-sizing: border-box;
+            }
+            .container{
+            background: #222;
+            color: #fff;
+            background-size: cover;
+            background-position: center;
+            max-width: 450px;
+            height: 100vh;
+            margin: auto;
+            position: relative;
+            }
+            #textBOX{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: #fff;
+            padding: 10px;
+            }
+            #prevtext{
+            position: absolute;
+            left: 50%;
+            bottom: 30%;
+            transform: translateX(-50%);
+            width: 90%;
+            font-size: 32px;
+            text-align: center;
+            text-shadow: 2px 2px 20px #000;
+            }
+            .upload{
+            position: absolute;
+            width: 60px;
+            bottom: 100px;
+            left: 50px;
+            transform: translateX(-10%);
+            cursor: pointer;
+            }
+            </style>
+        </head>
+        <body>
+            <div class="container" id="imgBox">
+
+                <div id="prevtext"></div>
+                <textarea id="textBOX" placeholder="ADD CAPTION:"></textarea>
+                <input type="file" accept="image/*" name="image" id="file" style="display: none"
+                onchange="loadfile(event)">
+                <label for="file" class="upload"> upload</label>
+
+            </div>
+
+<script>
+    var textBOX = document.getElementById("textBOX");
+    var imgBox = document.getElementById("imgBox");
+
+    textBOX.onkeyup = textBOX.onkeypress = function() {
+        document.getElementById("prevtext").innerHTML = this.value;  
+    }
+    var loadfile = function(event){
+    imgBox.style.backgroundImage = "url(" +URL.createObjectURL(event.target.files[0])+")";
+    }
+</script>
+        </body>
+    </html>
